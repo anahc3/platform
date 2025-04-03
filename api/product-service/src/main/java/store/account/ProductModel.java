@@ -27,8 +27,8 @@ public class ProductModel {
     @Column(name = "tx_unit")
     private String unit;
 
-    @Column(name = "int_price")
-    private Int price;
+    @Column(name = "double_price")
+    private Double price;
 
     public ProductModel(Product p) {
         this.id = p.id();
