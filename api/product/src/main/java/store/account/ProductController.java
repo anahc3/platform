@@ -22,14 +22,14 @@ public interface ProductController {
     @GetMapping("/product")
     public ResponseEntity<List<ProductOut>> findAll();
 
-    @GetMapping("/product/{id}")
+    @GetMapping("/product/{idProduct}")
     public ResponseEntity<ProductOut> findById(
-        @PathVariable String id
+        @PathVariable String idProduct
     );
 
-    @DeleteMapping("/product/{id}")
+    @DeleteMapping("/product/{idProduct}")
     public ResponseEntity<Void> delete(
-        @PathVariable String id
+        @PathVariable String idProduct
     );
 
 }
