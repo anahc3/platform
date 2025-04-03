@@ -28,8 +28,7 @@ public class ProductService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid price!");
         }
 
-        product.creation(new Date());
-        return productRepository.save(new productModel(product)).to();
+        return productRepository.save(new ProductModel(product)).to();
     }
 
     public Product findById(String id) {
