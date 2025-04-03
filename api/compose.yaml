@@ -42,6 +42,16 @@ services:
     ports:
       - 8080:8080
 
+  product:
+    hostname: product
+    build:
+      context: ./product-service
+      dockerfile: Dockerfile
+    environment:
+      DATABASE_HOST: db
+      DATABASE_USER: ${POSTGRES_USER:-store}
+      DATABASE_PASSWORD: ${POSTGRES_PASSWORD:-store}
+
   # exchange:
   #   build:
   #     context: ./exchange-service
