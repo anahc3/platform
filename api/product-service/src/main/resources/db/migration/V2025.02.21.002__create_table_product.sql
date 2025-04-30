@@ -3,5 +3,5 @@ CREATE TABLE product (
     tx_name VARCHAR(256) NOT NULL,
     tx_unit VARCHAR(256) NOT NULL,
     double_price DECIMAL(10,2) NOT NULL,
-    CONSTRAINT pk_account PRIMARY KEY (id_product)
+    CONSTRAINT pk_product PRIMARY KEY (id_product)
 );

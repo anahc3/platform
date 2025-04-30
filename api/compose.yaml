@@ -56,3 +56,13 @@ services:
     build:
       context: ./exchange-service
       dockerfile: Dockerfile
+
+  order:
+    hostname: order
+    build:
+      context: ./order-service
+      dockerfile: Dockerfile
+    environment:
+      DATABASE_HOST: db
+      DATABASE_USER: ${POSTGRES_USER:-store}
+      DATABASE_PASSWORD: ${POSTGRES_PASSWORD:-store}

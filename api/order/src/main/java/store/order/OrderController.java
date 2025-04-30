@@ -3,7 +3,6 @@ package store.order;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +15,8 @@ public interface OrderController {
 
     @PostMapping("/order")
     public ResponseEntity<OrderOut> create(
-        @RequestBody OrderIn orderIn
+        @RequestBody OrderIn orderIn,
+        @RequestHeader("id-account") String idAccount
     );
 
     @GetMapping("/order")
