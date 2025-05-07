@@ -1,10 +1,5 @@
 package store.product;
 
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.Base64;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.StreamSupport;
 

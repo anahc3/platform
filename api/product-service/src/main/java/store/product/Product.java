@@ -1,7 +1,5 @@
 package store.product;
 
-import java.util.Date;
-
 import lombok.Builder;
 import lombok.Data;
 import lombok.experimental.Accessors;
