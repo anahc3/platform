@@ -30,8 +30,8 @@ public class OrderResource implements OrderController {
     }
 
     @Override
-    public ResponseEntity<OrderOut> findById(String idOrder) {
-        Order order = orderService.findById(idOrder);
+    public ResponseEntity<OrderOut> findById(String idOrder, String idAccount) {
+        Order order = orderService.findById(idOrder, idAccount);
         return ResponseEntity.ok().body(OrderParser.to(order));
     }
 

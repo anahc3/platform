@@ -24,7 +24,8 @@ public interface OrderController {
 
     @GetMapping("/order/{idOrder}")
     public ResponseEntity<OrderOut> findById(
-        @PathVariable String idOrder
+        @PathVariable String idOrder,
+        @RequestHeader("id-account") String idAccount
     );
 
 }

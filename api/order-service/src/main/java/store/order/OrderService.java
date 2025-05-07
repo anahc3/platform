@@ -64,8 +64,8 @@ public class OrderService {
         return savedOrder;
     }
 
-    public Order findById(String id) {
-        return orderRepository.findById(id)
+    public Order findById(String id, String idAccount) {
+        return orderRepository.findByIdAndIdAccount(id, idAccount)
                 .map(OrderModel::to)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Order not found"));
     }
