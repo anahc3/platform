@@ -1,7 +1,6 @@
 name: store
 
 services:
-  
   db:
     image: postgres:latest
     hostname: db
@@ -52,10 +51,10 @@ services:
       DATABASE_USER: ${POSTGRES_USER:-store}
       DATABASE_PASSWORD: ${POSTGRES_PASSWORD:-store}
 
-  exchange:
-    build:
-      context: ./exchange-service
-      dockerfile: Dockerfile
+  # exchange:
+  #   build:
+  #     context: ./exchange-service
+  #     dockerfile: Dockerfile
 
   order:
     hostname: order

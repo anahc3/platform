@@ -1,4 +1,4 @@
-FROM python:3.9
+FROM python:3.12
 
 
 WORKDIR /code
@@ -10,7 +10,7 @@ COPY ./requirements.txt /code/requirements.txt
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
 
-COPY ./app/main.py /code/app/main.py
+COPY ./main.py /code/main.py
 
 
-CMD ["fastapi", "run", "/code/app/main.py", "--port", "80"]
+CMD ["fastapi", "run", "/code/main.py", "--port", "80"]
