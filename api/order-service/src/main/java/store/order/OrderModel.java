@@ -1,5 +1,6 @@
 package store.order;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -15,7 +16,7 @@ import lombok.experimental.Accessors;
 import store.account.AccountOut;
 
 @Entity
-@Table(name = "order")
+@Table(name = "orders")
 @Setter
 @Accessors(fluent = true)
 @NoArgsConstructor
@@ -46,7 +47,7 @@ public class OrderModel {
         return Order.builder()
                 .id(id)
                 .account(AccountOut.builder().id(idAccount).build())
-                .items(List.of())
+                .items(new ArrayList<>())
                 .date(date)
                 .total(total)
                 .build();

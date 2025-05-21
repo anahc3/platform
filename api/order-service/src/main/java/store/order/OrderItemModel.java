@@ -11,14 +11,15 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 import store.product.ProductOut;
 
-@Entity 
-@Table(name = "orderItem")
-@Setter @Accessors(fluent = true)
+@Entity
+@Table(name = "order_item")
+@Setter
+@Accessors(fluent = true)
 @NoArgsConstructor
 public class OrderItemModel {
 
     @Id
-    @Column(name = "id_orderItem")
+    @Column(name = "id_order_item")
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
@@ -31,11 +32,11 @@ public class OrderItemModel {
     @Column(name = "int_quantity")
     private Integer quantity;
 
-    @Column(name = "nr_priceProduct")
+    @Column(name = "nr_price_product")
     private Double priceProduct;
 
     @Column(name = "nr_total")
-    private Double total;   
+    private Double total;
 
     public OrderItemModel(OrderItem oi) {
         this.id = oi.id();
@@ -48,12 +49,12 @@ public class OrderItemModel {
 
     public OrderItem to() {
         return OrderItem.builder()
-            .id(id)
-            .order(Order.builder().id(idOrder).build())
-            .product(ProductOut.builder().id(idProduct).build())
-            .quantity(quantity)
-            .total(total)
-            .build();
-        }
+                .id(id)
+                .order(Order.builder().id(idOrder).build())
+                .product(ProductOut.builder().id(idProduct).build())
+                .quantity(quantity)
+                .total(total)
+                .build();
+    }
 
 }
