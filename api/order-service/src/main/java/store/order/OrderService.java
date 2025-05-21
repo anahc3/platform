@@ -65,9 +65,14 @@ public class OrderService {
     }
 
     public Order findById(String id, String idAccount) {
-        return orderRepository.findByIdAndIdAccount(id, idAccount)
+        Order found = orderRepository.findByIdAndIdAccount(id, idAccount)
                 .map(OrderModel::to)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Order not found"));
+        found.items(orderItemRepository.findByIdOrder(id)
+                .stream()
+                .map(OrderItemModel::to)
+                .toList());
+        return found;
     }
 
     public List<Order> findAll() {
