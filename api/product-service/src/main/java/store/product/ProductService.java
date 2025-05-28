@@ -27,7 +27,6 @@ public class ProductService {
         return productRepository.save(new ProductModel(product)).to();
     }
 
-    @Cacheable(value = "products", key = "#id")
     public Product findById(String id) {
         return productRepository.findById(id)
             .map(ProductModel::to)
