@@ -1,6 +1,15 @@
 name: store
 
 services:
+  redis:
+    image: redis:7
+    hostname: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - $VOLUME/redis:/data
+    restart: always
+
   db:
     image: postgres:latest
     hostname: db
@@ -46,10 +55,14 @@ services:
     build:
       context: ./product-service
       dockerfile: Dockerfile
+    depends_on:
+      - redis
     environment:
       DATABASE_HOST: db
       DATABASE_USER: ${POSTGRES_USER:-store}
       DATABASE_PASSWORD: ${POSTGRES_PASSWORD:-store}
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
 
   # exchange:
   #   build:
@@ -65,20 +78,3 @@ services:
       DATABASE_HOST: db
       DATABASE_USER: ${POSTGRES_USER:-store}
       DATABASE_PASSWORD: ${POSTGRES_PASSWORD:-store}
-  
-  redis:
-    image: redis
-    ports:
-      - 6379:6379
-
-  prometheus:
-    image: prom/prometheus
-    ports:
-      - 9090:9090
-    volumes:
-      - ./prometheus.yml:/etc/prometheus/prometheus.yml
-
-  grafana:
-    image: grafana/grafana
-    ports:
-      - 3000:3000
